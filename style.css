@@ -1,0 +1,236 @@
+/* Colours and spacing. Change them here and the whole site follows. */
+:root {
+  --paper: #F6F4EE;
+  --white: #FFFFFF;
+  --tint: #E4ECE6;
+  --ink: #1F2328;
+  --ink-soft: #4B535B;
+  --line: #D8D4C8;
+  --accent: #2F5D50;
+  --deep: #1F3D34;
+  --space-s: 8px;
+  --space-m: 24px;
+  --space-l: 64px;
+}
+
+/* A4 page size for printing the resume. */
+@page { size: A4; margin: 14mm; }
+
+/* Base: page background, body text and the plain element styles. */
+html { scroll-padding-top: 56px; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Public Sans", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3 { font-family: "Newsreader", serif; font-weight: 600; line-height: 1.2; }
+h1 { font-size: 3.5rem; margin: 0 0 var(--space-s); }
+h2 { font-size: 2rem; margin: 0 0 var(--space-m); }
+h3 { font-size: 1.25rem; margin: 0; }
+
+/* A short green bar under every section heading. */
+h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin-top: var(--space-s);
+  background: var(--accent);
+}
+
+p { max-width: 36rem; margin: 0 0 var(--space-s); }
+a { color: var(--accent); }
+a:hover { color: var(--deep); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Layout: sections are full-width bands, content sits in one centred column. */
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 var(--space-m); }
+main > section { padding: var(--space-l) 0; }
+#about, #skills { background: var(--white); }
+
+/* Navigation bar: dark green, sticky, name on the left and links on the right. */
+.site-header { position: sticky; top: 0; z-index: 1; background: var(--deep); }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; }
+.nav-links { display: flex; gap: var(--space-m); margin: 0; padding: 0; list-style: none; }
+
+.nav-brand, .nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.nav-brand { font-family: "Newsreader", serif; font-size: 1.25rem; font-weight: 600; }
+
+.nav-brand:hover, .nav-link:hover {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* Hero and contact: dark green bands with white text. */
+#hero, #contact { background: var(--deep); color: var(--white); }
+#hero p, #contact p { color: var(--tint); }
+#hero h2::after, #contact h2::after { background: var(--tint); }
+#contact a:not(.button) { color: var(--white); }
+#hero a:focus-visible, #contact a:focus-visible, .site-header a:focus-visible { outline-color: var(--white); }
+
+/* Hero: name and intro on the left, DS monogram on the right. */
+#hero { padding: 80px 0; }
+.hero-inner { display: flex; justify-content: space-between; align-items: center; gap: var(--space-m) 40px; }
+.lead { font-size: 1.5rem; line-height: 1.4; margin-bottom: var(--space-m); }
+
+.monogram {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+  border: 2px solid var(--tint);
+  border-radius: 50%;
+  color: var(--white);
+  font-family: "Newsreader", serif;
+  font-size: 3.5rem;
+}
+
+/* Buttons: filled for the main action, outlined for the second one. */
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-s) 16px; margin-top: var(--space-m); }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.button:hover { background: var(--deep); border-color: var(--deep); color: var(--white); }
+.button-outline { background: transparent; color: var(--accent); }
+.button-outline:hover { background: var(--white); color: var(--deep); }
+
+/* Buttons on the dark bands: the colours are flipped so they stand out. */
+#hero .button, #contact .button { background: var(--white); border-color: var(--white); color: var(--deep); }
+#hero .button:hover, #contact .button:hover { background: var(--tint); border-color: var(--tint); }
+#hero .button-outline, #contact .button-outline { background: transparent; color: var(--white); }
+#hero .button-outline:hover, #contact .button-outline:hover { background: var(--white); color: var(--deep); }
+
+/* Experience timeline: a line down the left and a dot on every card. */
+.jobs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  margin-left: 9px;
+  padding-left: 32px;
+  border-left: 2px solid var(--line);
+}
+
+.job {
+  position: relative;
+  padding: var(--space-m);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.job::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: -42px;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  background: var(--accent);
+  border: 3px solid var(--paper);
+  border-radius: 50%;
+}
+
+.job:hover { border-color: var(--accent); }
+.job-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--space-s); }
+.job-head + p { margin-top: var(--space-s); }
+.job p:last-child { margin-bottom: 0; }
+.meta { margin: 0; color: var(--accent); font-size: 0.9375rem; font-weight: 600; }
+
+/* Skills: short labels shown as simple outlined chips. */
+.skills { display: flex; flex-wrap: wrap; gap: var(--space-s); margin: 0; padding: 0; list-style: none; }
+.skills li { padding: var(--space-s) 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; }
+
+/* Resume area: a light green band with the white paper resume on it. */
+.resume-area { padding: var(--space-l) 0; background: var(--tint); }
+.resume-head h2 { margin-bottom: var(--space-m); }
+
+#resume {
+  margin-top: var(--space-m);
+  padding: 40px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+#resume p { max-width: none; }
+.resume-name { font-size: 2rem; margin: 0 0 var(--space-s); }
+.resume-name::after { display: none; }
+.resume-contact { color: var(--ink-soft); }
+
+#resume h3 {
+  margin-top: var(--space-m);
+  padding-bottom: var(--space-s);
+  border-bottom: 1px solid var(--line);
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.item { margin-top: var(--space-s); }
+.item p { margin-bottom: 0; }
+.item-title { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 var(--space-m); }
+.item-time { color: var(--ink-soft); }
+#resume ul { margin: var(--space-s) 0 0; padding-left: 20px; }
+
+/* Footer: the last dark green strip. */
+.site-footer { padding: var(--space-m) 0; background: var(--deep); color: var(--tint); font-size: 0.9375rem; }
+.site-footer p { margin: 0; }
+
+/* Phones: stack the nav, hero and buttons, shrink the spacing. */
+@media (max-width: 699px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.75rem; }
+  main > section, .resume-area { padding: 40px 0; }
+  #hero { padding: 40px 0; }
+  .site-header { position: static; }
+  .nav-inner { flex-direction: column; align-items: flex-start; }
+  .nav-links { flex-wrap: wrap; gap: 0 16px; }
+  .hero-inner { flex-direction: column-reverse; align-items: flex-start; }
+  .monogram { width: 96px; height: 96px; font-size: 2rem; }
+  .actions { flex-direction: column; }
+  .actions .button { justify-content: center; }
+  .jobs { padding-left: 16px; }
+  .job::before { left: -26px; }
+  #resume { padding: var(--space-m); }
+}
+
+/* Print: show only the resume, black on white, on one A4 page. */
+@media print {
+  .site-header, .site-footer, #hero, #about, #experience,
+  #skills, #education, #contact, .resume-head { display: none; }
+  body, .resume-area { background: var(--white); }
+  .resume-area { padding: 0; }
+  .wrap { max-width: none; padding: 0; }
+  #resume { margin: 0; padding: 0; border: none; font-size: 10pt; line-height: 1.4; }
+  #resume, #resume * { color: #000; }
+}
